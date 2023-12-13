@@ -1,21 +1,39 @@
-﻿var number = 12345655440;
-string numberAsstring = number.ToString();
-char[] letters = numberAsstring.ToArray();
-char[] Check = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-int[] counters = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-for (int i = 0; i < letters.Length; i++)
+﻿using ChallengeApp;
+
+var employee1 = new Employee ("Anna", "Kowalska", 33);
+var employee2 = new Employee ("Basia","Polak",22);
+var employee3 = new Employee ("Pawel","Diabel",45);
+
+employee1.Addscore(3);
+employee1.Addscore(4);
+employee1.Addscore(6);
+employee1.Addscore(9);
+employee1.Addscore(9);
+employee2.Addscore(3);
+employee2.Addscore(1);
+employee2.Addscore(4);
+employee2.Addscore(4);
+employee2.Addscore(4);
+employee3.Addscore(4);
+employee3.Addscore(9);
+employee3.Addscore(9);
+employee3.Addscore(9);
+employee3.Addscore(1);
+
+List<Employee> gracze = new List<Employee>()
 {
-    for (int j = 0; j < Check.Length; j++)
+    employee1, employee2, employee3 
+};
+var maxResult = -1;
+Employee employeeWithMaxResult = null;
+foreach (var employee in gracze)
+{
+    if (employee.Rating > maxResult)
     {
-        if (letters[i] == Check[j])
-        {
-            counters[j]++;
-        }
+        employeeWithMaxResult = employee;
+        maxResult = employee.Rating;
     }
-}
-Console.Write("Wyniki dla liczby "); Console.WriteLine(number);
-for (int i = 0; i < 10; i++)
-{
-    Console.Write("liczba "); Console.Write(i); Console.Write(" jest "); Console.WriteLine(counters[i]);
-}
+  
+    }
+    Console.WriteLine(employeeWithMaxResult.Name + " " +employeeWithMaxResult.Surname + " " +employeeWithMaxResult.Age + " "+"lat" +"-"+ maxResult+"punktów");
 
